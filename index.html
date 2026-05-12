@@ -46,7 +46,7 @@
             to { opacity: 1; }
         }
 
-        /* --- 애니메이션 지도 영역 --- */
+        /* 애니메이션 지도 영역 */
         .map-wrapper {
             position: relative;
             width: 100%;
@@ -54,6 +54,7 @@
             overflow: hidden;
             margin-bottom: 30px;
             border: 1px solid #eee;
+            background-color: #f9f9f9;
         }
 
         .map-wrapper img {
@@ -61,18 +62,18 @@
             display: block;
         }
 
-        /* 노란 동그라미와 이름표 세트 */
+        /* 노란 동그라미 + 라벨 공통 스타일 */
         .hotspot {
             position: absolute;
             display: flex;
             flex-direction: column;
             align-items: center;
-            opacity: 0; /* 처음엔 숨김 */
+            opacity: 0;
             transform: translateY(10px);
-            transition: all 0.6s ease;
+            transition: all 0.7s ease-out;
         }
 
-        /* 페이지가 활성화(active)되면 애니메이션 실행 */
+        /* 정답 페이지 활성화 시 애니메이션 실행 */
         .active .hotspot {
             opacity: 1;
             transform: translateY(0);
@@ -81,28 +82,28 @@
         .circle {
             width: 24px;
             height: 24px;
-            border: 3px solid #FFD700; /* 노란색 */
+            border: 3px solid #FFD700;
             border-radius: 50%;
-            background-color: rgba(255, 215, 0, 0.3);
-            box-shadow: 0 0 8px rgba(255, 215, 0, 0.8);
+            background-color: rgba(255, 215, 0, 0.4);
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
             margin-bottom: 5px;
         }
 
         .label {
-            background-color: rgba(74, 96, 161, 0.9);
+            background-color: rgba(74, 96, 161, 0.95);
             color: white;
             padding: 4px 10px;
             border-radius: 6px;
             font-size: 13px;
-            font-weight: bold;
+            font-weight: 700;
             white-space: nowrap;
         }
 
-        /* 각 항목별 위치 및 등장 순서(지연시간) */
-        .pos1 { top: 75%; left: 45%; transition-delay: 0.5s; } /* 금천교 */
-        .pos2 { top: 55%; left: 20%; transition-delay: 1.2s; } /* 수라간 */
-        .pos3 { top: 40%; left: 70%; transition-delay: 1.9s; } /* 망료위 */
-        .pos4 { top: 35%; left: 35%; transition-delay: 2.6s; } /* 산신석 */
+        /* 순차적으로 사륵사륵 뜨는 좌표 및 지연시간 설정 */
+        .pos1 { top: 82%; left: 45%; transition-delay: 0.5s; } /* 금천교 */
+        .pos2 { top: 58%; left: 18%; transition-delay: 1.3s; } /* 수라간 */
+        .pos3 { top: 40%; left: 72%; transition-delay: 2.1s; } /* 망료위 */
+        .pos4 { top: 38%; left: 30%; transition-delay: 2.9s; } /* 산신석 */
 
         .bottom-bar {
             position: fixed;
@@ -118,21 +119,18 @@
             z-index: 100;
         }
 
-        .bottom-bar.active {
-            display: flex;
-        }
+        .bottom-bar.active { display: flex; }
 
         .btn {
             background-color: #4A60A1; 
             color: white;
             border: none;
             padding: 18px 30px;
-            border-radius: 10px;
+            border-radius: 12px;
             font-size: 17px;
             font-weight: bold;
             cursor: pointer;
             width: 100%;
-            transition: 0.2s;
         }
 
         .title { font-size: 20px; font-weight: 800; margin-bottom: 25px; line-height: 1.5; color: #222; }
@@ -143,8 +141,6 @@
         
         .img-box {
             width: 100%;
-            height: auto;
-            background-color: #f8f9fa;
             border-radius: 12px;
             margin-bottom: 30px;
             overflow: hidden;
@@ -170,7 +166,7 @@
 
     <div class="scroll-content" id="page2">
         <div class="img-box">
-            <img src="https://via.placeholder.com/600x400?text=명릉+상설도+이미지" alt="명릉 상설도">
+            <img src="https://lh3.googleusercontent.com/d/18D3QzSj8Eg_m5FmvGyI3bCmu-wQYMc9g" alt="명릉 상설도">
         </div>
         <div class="desc" style="text-align: center;">
             🗺️ <b>명릉 상설도</b> 🗺️<br>
@@ -186,31 +182,19 @@
         <div class="title">정답 : 금천교, 수라간, 산신석, 망료위</div>
         
         <div class="map-wrapper">
-            <img src="https://via.placeholder.com/600x500?text=상설도+지도+이미지" alt="상설도 지도">
+            <img src="https://lh3.googleusercontent.com/d/18D3QzSj8Eg_m5FmvGyI3bCmu-wQYMc9g" alt="정답 지도">
             
-            <div class="hotspot pos1">
-                <div class="circle"></div>
-                <div class="label">금천교</div>
-            </div>
-            <div class="hotspot pos2">
-                <div class="circle"></div>
-                <div class="label">수라간</div>
-            </div>
-            <div class="hotspot pos3">
-                <div class="circle"></div>
-                <div class="label">망료위</div>
-            </div>
-            <div class="hotspot pos4">
-                <div class="circle"></div>
-                <div class="label">산신석</div>
-            </div>
+            <div class="hotspot pos1"><div class="circle"></div><div class="label">금천교</div></div>
+            <div class="hotspot pos2"><div class="circle"></div><div class="label">수라간</div></div>
+            <div class="hotspot pos3"><div class="circle"></div><div class="label">망료위</div></div>
+            <div class="hotspot pos4"><div class="circle"></div><div class="label">산신석</div></div>
         </div>
 
         <div class="desc">
             📌 <b>금천교</b> : 왕릉과 속세를 구분하는 다리<br><br>
-            📌 <b>수라간</b> : 산릉 의례 때 진설되는 음식 가운데 따뜻하게 올려야 하는 탕이나 국을 데우는 곳이다. 수라간은 정자각 동쪽에 수복방과 대칭해 세워진다.<br><br>
-            📌 <b>산신석</b> : 산신을 지키는 산신에게 예를 올리는 곳으로, 정자각 뒤편에 예감과 대칭되는 위치에 설치된다.<br><br>
-            📌 <b>망료위(예감)</b> : 산릉제례 때 축문을 태워 묻기 위한 곳으로, 일반적으로 정자각 우측 뒤편에 설치된다.<br><br>
+            📌 <b>수라간</b> : 음식을 데우는 곳이다.<br><br>
+            📌 <b>산신석</b> : 산신에게 예를 올리는 곳이다.<br><br>
+            📌 <b>망료위(예감)</b> : 축문을 태워 묻는 곳이다.<br><br>
             조선왕릉 상설도에 대해 더 알아보고 싶다면?<br>
             <a href="https://portal.nrich.go.kr/kor/page.do?menuIdx=1288" target="_blank" class="link-text">클릭하기!</a>
         </div>
@@ -224,7 +208,7 @@
         <div class="desc">
             역사적 상상력을 한번 발휘 해봅시다!<br><br>
             💡 <b>HINT! 금천교가 없어진 이유:</b><br><br>
-            18세기 제작된 것으로 추정되는 『명릉도』를 보면 본래 명릉의 능역은 지금보다 훨씬 광대했을 것으로 추정된다. 그러나 일제강점기 훼손 등으로 본래의 모습은 훼손되었으며, 현재는 현저히 축소된 형국을 보여준다.<br><br>
+            본래 명릉의 능역은 지금보다 훨씬 광대했을 것으로 추정되나, 일제강점기 훼손 등으로 현재는 축소된 형국을 보여줍니다.<br><br>
             <a href="https://portal.nrich.go.kr/kor/royalTombView.do?menuIdx=1273&royal_idx=28" target="_blank" class="link-text">출처</a>
         </div>
     </div>
@@ -233,7 +217,7 @@
     </div>
 
     <div class="scroll-content" id="page5">
-        <div class="center-text desc" style="line-height: 1.8; font-weight: 500;">
+        <div class="center-text desc">
             🧩 지령지 미션 2개를<br>모두 완료했다면,<br>능참봉을 찾아가 확인 후<br>비문 조각을 수령하세요~! 🏇<br><br>
             ⛩️ 홍살문을 통과해보자! ⛩️
         </div>
@@ -248,10 +232,8 @@
     function nextPage(pageNum) {
         document.querySelectorAll('.scroll-content').forEach(el => el.classList.remove('active'));
         document.querySelectorAll('.bottom-bar').forEach(el => el.classList.remove('active'));
-        
         const targetPage = document.getElementById('page' + pageNum);
         const targetBtn = document.getElementById('btn' + pageNum);
-        
         if (targetPage && targetBtn) {
             targetPage.classList.add('active');
             targetBtn.classList.add('active');
