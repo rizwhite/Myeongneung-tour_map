@@ -46,26 +46,63 @@
             to { opacity: 1; }
         }
 
-        .img-box {
+        /* --- 애니메이션 지도 영역 --- */
+        .map-wrapper {
+            position: relative;
             width: 100%;
-            height: auto;
-            background-color: #f8f9fa;
             border-radius: 12px;
-            margin-bottom: 30px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             overflow: hidden;
+            margin-bottom: 30px;
             border: 1px solid #eee;
         }
 
-        .img-box img {
+        .map-wrapper img {
             width: 100%;
-            height: auto;
-            max-height: 45vh;
-            object-fit: contain;
             display: block;
         }
+
+        /* 노란 동그라미와 이름표 세트 */
+        .hotspot {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0; /* 처음엔 숨김 */
+            transform: translateY(10px);
+            transition: all 0.6s ease;
+        }
+
+        /* 페이지가 활성화(active)되면 애니메이션 실행 */
+        .active .hotspot {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .circle {
+            width: 24px;
+            height: 24px;
+            border: 3px solid #FFD700; /* 노란색 */
+            border-radius: 50%;
+            background-color: rgba(255, 215, 0, 0.3);
+            box-shadow: 0 0 8px rgba(255, 215, 0, 0.8);
+            margin-bottom: 5px;
+        }
+
+        .label {
+            background-color: rgba(74, 96, 161, 0.9);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        /* 각 항목별 위치 및 등장 순서(지연시간) */
+        .pos1 { top: 75%; left: 45%; transition-delay: 0.5s; } /* 금천교 */
+        .pos2 { top: 55%; left: 20%; transition-delay: 1.2s; } /* 수라간 */
+        .pos3 { top: 40%; left: 70%; transition-delay: 1.9s; } /* 망료위 */
+        .pos4 { top: 35%; left: 35%; transition-delay: 2.6s; } /* 산신석 */
 
         .bottom-bar {
             position: fixed;
@@ -102,14 +139,18 @@
         .desc { font-size: 16px; line-height: 1.8; color: #444; margin-bottom: 20px; }
         .center-text { text-align: center; width: 100%; }
         b { color: #000; }
+        .link-text { color: #4A60A1; text-decoration: underline; font-weight: bold; }
         
-        /* 링크 스타일 추가 */
-        .link-text {
-            color: #4A60A1;
-            text-decoration: underline;
-            font-weight: bold;
-            cursor: pointer;
+        .img-box {
+            width: 100%;
+            height: auto;
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            overflow: hidden;
+            border: 1px solid #eee;
         }
+        .img-box img { width: 100%; display: block; }
     </style>
 </head>
 <body>
@@ -143,6 +184,28 @@
 
     <div class="scroll-content" id="page3">
         <div class="title">정답 : 금천교, 수라간, 산신석, 망료위</div>
+        
+        <div class="map-wrapper">
+            <img src="https://via.placeholder.com/600x500?text=상설도+지도+이미지" alt="상설도 지도">
+            
+            <div class="hotspot pos1">
+                <div class="circle"></div>
+                <div class="label">금천교</div>
+            </div>
+            <div class="hotspot pos2">
+                <div class="circle"></div>
+                <div class="label">수라간</div>
+            </div>
+            <div class="hotspot pos3">
+                <div class="circle"></div>
+                <div class="label">망료위</div>
+            </div>
+            <div class="hotspot pos4">
+                <div class="circle"></div>
+                <div class="label">산신석</div>
+            </div>
+        </div>
+
         <div class="desc">
             📌 <b>금천교</b> : 왕릉과 속세를 구분하는 다리<br><br>
             📌 <b>수라간</b> : 산릉 의례 때 진설되는 음식 가운데 따뜻하게 올려야 하는 탕이나 국을 데우는 곳이다. 수라간은 정자각 동쪽에 수복방과 대칭해 세워진다.<br><br>
@@ -161,8 +224,7 @@
         <div class="desc">
             역사적 상상력을 한번 발휘 해봅시다!<br><br>
             💡 <b>HINT! 금천교가 없어진 이유:</b><br><br>
-            18세기 제작된 것으로 추정되는 『명릉도』를 보면 본래 명릉의 능역은 지금보다 훨씬 광대했을 것으로 추정된다. <br><br>
-            그러나 일제강점기 황실재산 찬탈과 1970년대 군부대 주둔 등으로 인해 본래의 모습은 훼손되었으며, 지금은 안산인 망월산 주변으로 민가와 농가, 도로가 조성됨에 따라 연지가 없어지고 홍살문으로 이어지는 진입로가 도심지와 맞닿아 있는 등 현저히 축소된 형국을 보여준다.<br><br>
+            18세기 제작된 것으로 추정되는 『명릉도』를 보면 본래 명릉의 능역은 지금보다 훨씬 광대했을 것으로 추정된다. 그러나 일제강점기 훼손 등으로 본래의 모습은 훼손되었으며, 현재는 현저히 축소된 형국을 보여준다.<br><br>
             <a href="https://portal.nrich.go.kr/kor/royalTombView.do?menuIdx=1273&royal_idx=28" target="_blank" class="link-text">출처</a>
         </div>
     </div>
