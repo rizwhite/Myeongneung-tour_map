@@ -13,7 +13,7 @@
             background-color: #f4f6f8;
             display: flex;
             justify-content: center;
-            align-items: center; /* 화면 전체의 수직 중앙 */
+            align-items: center; /* 전체 화면에서 수직 중앙 정렬 확인 */
             min-height: 100vh;
         }
 
@@ -21,7 +21,7 @@
             width: 100%;
             max-width: 600px;
             background-color: #ffffff;
-            height: 100vh;
+            height: 100vh; /* 높이를 고정하여 중앙 정렬 효과 극대화 */
             display: flex;
             flex-direction: column;
             position: relative;
@@ -34,8 +34,8 @@
             padding: 40px 25px 120px 25px;
             display: none;
             flex-direction: column;
-            align-items: center; /* 내부 요소 가로 중앙 */
-            justify-content: center; /* 내부 요소 세로 중앙 */
+            align-items: center; /* 가로 중앙 정렬 */
+            justify-content: center; /* 세로 중앙 정렬 강화 */
             text-align: center;
             -webkit-overflow-scrolling: touch;
         }
@@ -46,11 +46,11 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* 이미지 및 애니메이션 영역 (map-wrapper 구조 유지) */
+        /* 이미지 및 애니메이션 영역 */
         .map-wrapper {
             position: relative;
             width: 100%;
@@ -58,6 +58,7 @@
             overflow: hidden;
             margin-bottom: 30px;
             border: 1px solid #eee;
+            background-color: #f9f9f9;
         }
 
         .map-wrapper img {
@@ -65,15 +66,15 @@
             display: block;
         }
 
-        /* 예시 영상 스타일의 노란 동그라미 포인트 */
+        /* 예시 영상 스타일의 노란 동그라미 애니메이션 */
         .hotspot {
             position: absolute;
             display: flex;
             flex-direction: column;
             align-items: center;
             opacity: 0;
-            transform: scale(0.5); /* 팝업 효과 */
-            transition: all 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform: scale(0.5);
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         .active .hotspot {
@@ -82,38 +83,39 @@
         }
 
         .circle {
-            width: 24px;
-            height: 24px;
-            border: 3px solid #FFD700;
+            width: 26px;
+            height: 26px;
+            border: 3.5px solid #FFD700; /* 예시 이미지와 유사한 노란색 */
             border-radius: 50%;
-            background-color: rgba(255, 215, 0, 0.4);
-            box-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+            background-color: rgba(255, 215, 0, 0.3);
+            box-shadow: 0 0 8px rgba(255, 215, 0, 0.8);
             margin-bottom: 5px;
         }
 
         .label {
-            background-color: rgba(30, 41, 59, 0.9); /* 다크 모드 스타일 이름표 */
+            background-color: rgba(30, 41, 59, 0.9);
             color: white;
-            padding: 4px 10px;
-            border-radius: 6px;
+            padding: 4px 12px;
+            border-radius: 8px;
             font-size: 13px;
             font-weight: 700;
             white-space: nowrap;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
-        /* 명릉 상설도 기준 좌표 및 순차 지연 시간 */
-        .pos1 { top: 75%; left: 45%; transition-delay: 0.5s; } /* 금천교 */
-        .pos2 { top: 55%; left: 20%; transition-delay: 1.2s; } /* 수라간 */
-        .pos3 { top: 40%; left: 70%; transition-delay: 1.9s; } /* 망료위 */
-        .pos4 { top: 38%; left: 35%; transition-delay: 2.6s; } /* 산신석 */
+        /* 명릉 상설도 기반 정밀 좌표 및 등장 순서 지연 */
+        .pos1 { top: 88%; left: 16%; transition-delay: 0.5s; } /* 금천교 */
+        .pos2 { top: 66%; left: 28%; transition-delay: 1.3s; } /* 수라간 */
+        .pos3 { top: 50%; left: 52%; transition-delay: 2.1s; } /* 망료위 */
+        .pos4 { top: 63%; left: 69%; transition-delay: 2.9s; } /* 산신석 */
 
         .bottom-bar {
-            position: absolute;
+            position: absolute; /* fixed에서 absolute로 변경하여 컨테이너 하단 고정 */
             bottom: 0;
             width: 100%;
             padding: 20px;
             box-sizing: border-box;
-            background: white;
+            background: rgba(255, 255, 255, 0.95);
             border-top: 1px solid #eee;
             display: none;
             justify-content: center;
@@ -132,10 +134,13 @@
             font-weight: bold;
             cursor: pointer;
             width: 100%;
+            transition: transform 0.1s;
         }
+        
+        .btn:active { transform: scale(0.98); }
 
         .title { font-size: 20px; font-weight: 800; margin-bottom: 25px; line-height: 1.5; color: #222; width: 100%; }
-        .desc { font-size: 16px; line-height: 1.8; color: #444; margin-bottom: 20px; width: 100%; }
+        .desc { font-size: 16px; line-height: 1.8; color: #444; margin-bottom: 20px; width: 100%; word-break: keep-all; }
         b { color: #000; }
         .link-text { color: #4A60A1; text-decoration: underline; font-weight: bold; }
         
@@ -145,6 +150,7 @@
             margin-bottom: 30px;
             overflow: hidden;
             border: 1px solid #eee;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
         .img-box img { width: 100%; display: block; }
     </style>
@@ -155,7 +161,7 @@
 
     <div class="scroll-content active" id="page1">
         <div class="title">
-            <span style="font-size: 0.9rem; font-weight: 500; color: #666;">세계유산 조선왕릉 가족 탐험대</span><br><br>
+            <span style="font-size: 0.9rem; font-weight: 500; color: #666;">세계유산 조선왕릉<br>가족 탐험대</span><br><br>
             [O] 탐험 2 명릉 홍살문 [O]<br>
             🗺️ 조선왕릉 상설도와<br>명릉 상설도 비교 🗺️
         </div>
@@ -170,7 +176,8 @@
         </div>
         <div class="desc">
             🗺️ <b>명릉 상설도</b> 🗺️<br>
-            활동지의 조선왕릉 상설도와 비교해보고,<br><b>없어진 부분</b>이 어디인지 찾아보세요!
+            활동지의 조선왕릉 상설도와<br>비교해보자!<br><br>
+            그렇다면 없어진 부분은 무엇일까?
         </div>
     </div>
     <div class="bottom-bar" id="btn2">
@@ -185,7 +192,7 @@
             
             <div class="hotspot pos1"><div class="circle"></div><div class="label">금천교</div></div>
             <div class="hotspot pos2"><div class="circle"></div><div class="label">수라간</div></div>
-            <div class="hotspot pos3"><div class="circle"></div><div class="label">망료위</div></div>
+            <div class="hotspot pos3"><div class="circle"></div><div class="label">망료위(예감)</div></div>
             <div class="hotspot pos4"><div class="circle"></div><div class="label">산신석</div></div>
         </div>
 
@@ -194,18 +201,23 @@
             📌 <b>수라간</b> : 음식을 데우는 곳이다.<br>
             📌 <b>산신석</b> : 산신에게 예를 올리는 곳이다.<br>
             📌 <b>망료위</b> : 축문을 태워 묻는 곳이다.<br><br>
-            <center><a href="https://portal.nrich.go.kr/kor/page.do?menuIdx=1288" target="_blank" class="link-text">상설도 자세히 보기</a></center>
+            <div style="text-align: center;">
+                조선왕릉 상설도에 대해 더 알아보고 싶다면?<br>
+                <a href="https://portal.nrich.go.kr/kor/page.do?menuIdx=1288" target="_blank" class="link-text">클릭하기!</a>
+            </div>
         </div>
     </div>
     <div class="bottom-bar" id="btn3">
-        <button class="btn" onclick="nextPage(4)">그렇다면 왜 없어졌을까요?</button>
+        <button class="btn" onclick="nextPage(4)">그렇다면?</button>
     </div>
 
     <div class="scroll-content" id="page4">
         <div class="title">왜 없어졌을까요?</div>
         <div class="desc">
-            본래 명릉은 지금보다 훨씬 넓었으나,<br><b>일제강점기 훼손</b> 등으로 인해 현재는 본래의 모습이 많이 축소되었습니다.<br><br>
-            <a href="https://portal.nrich.go.kr/kor/royalTombView.do?menuIdx=1273&royal_idx=28" target="_blank" class="link-text">역사적 출처 보기</a>
+            역사적 상상력을 한번 발휘 해봅시다!<br><br>
+            💡 <b>HINT! 금천교가 없어진 이유:</b><br><br>
+            18세기 『명릉도』를 보면 본래 명릉의 능역은 지금보다 훨씬 광대했을 것으로 추정되나, 일제강점기 훼손 등으로 현재는 축소된 형국을 보여줍니다.<br><br>
+            <a href="https://portal.nrich.go.kr/royalTombView.do?menuIdx=1273&royal_idx=28" target="_blank" class="link-text">역사적 근거 자세히 보기</a>
         </div>
     </div>
     <div class="bottom-bar" id="btn4">
@@ -214,8 +226,8 @@
 
     <div class="scroll-content" id="page5">
         <div class="desc" style="font-weight: 600;">
-            🧩 미션 2개를 모두 완료했다면,<br>능참봉을 찾아가서 <b>비문 조각</b>을 받으세요!<br><br>
-            ⛩️ 이제 홍살문을 통과해 봅시다! ⛩️
+            🧩 미션 2개를 모두 완료했다면,<br>능참봉을 찾아가 확인 후<br>비문 조각을 수령하세요~! 🏇<br><br>
+            ⛩️ 홍살문을 통과해보자! ⛩️
         </div>
     </div>
     <div class="bottom-bar" id="btn5">
@@ -228,8 +240,10 @@
     function nextPage(pageNum) {
         document.querySelectorAll('.scroll-content').forEach(el => el.classList.remove('active'));
         document.querySelectorAll('.bottom-bar').forEach(el => el.classList.remove('active'));
+        
         const targetPage = document.getElementById('page' + pageNum);
         const targetBtn = document.getElementById('btn' + pageNum);
+        
         if (targetPage && targetBtn) {
             targetPage.classList.add('active');
             targetBtn.classList.add('active');
