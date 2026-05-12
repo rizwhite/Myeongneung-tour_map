@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>탐험 2 - 명릉 상설도 비교</title>
+    <style>
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+        
+        body {
+            font-family: 'Pretendard', sans-serif;
+            margin: 0;
+            background-color: #f4f6f8;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .app-container {
+            width: 100%;
+            max-width: 600px;
+            background-color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+
+        .scroll-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 40px 25px 120px 25px;
+            display: none;
+            flex-direction: column;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .scroll-content.active {
+            display: flex;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .img-box {
+            width: 100%;
+            height: auto;
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            border: 1px solid #eee;
+        }
+
+        .img-box img {
+            width: 100%;
+            height: auto;
+            max-height: 45vh;
+            object-fit: contain;
+            display: block;
+        }
+
+        .bottom-bar {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+            box-sizing: border-box;
+            background: white;
+            border-top: 1px solid #eee;
+            display: none;
+            justify-content: center;
+            z-index: 100;
+        }
+
+        .bottom-bar.active {
+            display: flex;
+        }
+
+        .btn {
+            background-color: #4A60A1; 
+            color: white;
+            border: none;
+            padding: 18px 30px;
+            border-radius: 10px;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.2s;
+        }
+
+        .title { font-size: 20px; font-weight: 800; margin-bottom: 25px; line-height: 1.5; color: #222; }
+        .desc { font-size: 16px; line-height: 1.8; color: #444; margin-bottom: 20px; }
+        .center-text { text-align: center; width: 100%; }
+        b { color: #000; }
+        
+        /* 링크 스타일 추가 */
+        .link-text {
+            color: #4A60A1;
+            text-decoration: underline;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+
+    <div class="scroll-content active" id="page1">
+        <div class="center-text title">
+            <span style="font-size: 1rem; font-weight: 500;">세계유산 조선왕릉<br>가족 탐험대</span><br><br>
+            [O] 탐험 2 명릉 홍살문 [O]<br>
+            🗺️ 조선왕릉 상설도와<br>명릉 상설도 비교 🗺️
+        </div>
+    </div>
+    <div class="bottom-bar active" id="btn1">
+        <button class="btn" onclick="nextPage(2)">탐험 시작</button>
+    </div>
+
+    <div class="scroll-content" id="page2">
+        <div class="img-box">
+            <img src="https://via.placeholder.com/600x400?text=명릉+상설도+이미지" alt="명릉 상설도">
+        </div>
+        <div class="desc" style="text-align: center;">
+            🗺️ <b>명릉 상설도</b> 🗺️<br>
+            활동지의 조선왕릉 상설도와<br>비교해보자!<br><br>
+            그렇다면 없어진 부분은 무엇일까?
+        </div>
+    </div>
+    <div class="bottom-bar" id="btn2">
+        <button class="btn" onclick="nextPage(3)">없어진 부분 확인하러 가기</button>
+    </div>
+
+    <div class="scroll-content" id="page3">
+        <div class="title">정답 : 금천교, 수라간, 산신석, 망료위</div>
+        <div class="desc">
+            📌 <b>금천교</b> : 왕릉과 속세를 구분하는 다리<br><br>
+            📌 <b>수라간</b> : 산릉 의례 때 진설되는 음식 가운데 따뜻하게 올려야 하는 탕이나 국을 데우는 곳이다. 수라간은 정자각 동쪽에 수복방과 대칭해 세워진다.<br><br>
+            📌 <b>산신석</b> : 산신을 지키는 산신에게 예를 올리는 곳으로, 정자각 뒤편에 예감과 대칭되는 위치에 설치된다.<br><br>
+            📌 <b>망료위(예감)</b> : 산릉제례 때 축문을 태워 묻기 위한 곳으로, 일반적으로 정자각 우측 뒤편에 설치된다.<br><br>
+            조선왕릉 상설도에 대해 더 알아보고 싶다면?<br>
+            <a href="https://portal.nrich.go.kr/kor/page.do?menuIdx=1288" target="_blank" class="link-text">클릭하기!</a>
+        </div>
+    </div>
+    <div class="bottom-bar" id="btn3">
+        <button class="btn" onclick="nextPage(4)">그렇다면?</button>
+    </div>
+
+    <div class="scroll-content" id="page4">
+        <div class="title">왜 없어졌을까요?</div>
+        <div class="desc">
+            역사적 상상력을 한번 발휘 해봅시다!<br><br>
+            💡 <b>HINT! 금천교가 없어진 이유:</b><br><br>
+            18세기 제작된 것으로 추정되는 『명릉도』를 보면 본래 명릉의 능역은 지금보다 훨씬 광대했을 것으로 추정된다. <br><br>
+            그러나 일제강점기 황실재산 찬탈과 1970년대 군부대 주둔 등으로 인해 본래의 모습은 훼손되었으며, 지금은 안산인 망월산 주변으로 민가와 농가, 도로가 조성됨에 따라 연지가 없어지고 홍살문으로 이어지는 진입로가 도심지와 맞닿아 있는 등 현저히 축소된 형국을 보여준다.<br><br>
+            <a href="https://portal.nrich.go.kr/kor/royalTombView.do?menuIdx=1273&royal_idx=28" target="_blank" class="link-text">출처</a>
+        </div>
+    </div>
+    <div class="bottom-bar" id="btn4">
+        <button class="btn" onclick="nextPage(5)">탐험 완료</button>
+    </div>
+
+    <div class="scroll-content" id="page5">
+        <div class="center-text desc" style="line-height: 1.8; font-weight: 500;">
+            🧩 지령지 미션 2개를<br>모두 완료했다면,<br>능참봉을 찾아가 확인 후<br>비문 조각을 수령하세요~! 🏇<br><br>
+            ⛩️ 홍살문을 통과해보자! ⛩️
+        </div>
+    </div>
+    <div class="bottom-bar" id="btn5">
+        <button class="btn" onclick="location.reload()">탐험 2 끝!</button>
+    </div>
+
+</div>
+
+<script>
+    function nextPage(pageNum) {
+        document.querySelectorAll('.scroll-content').forEach(el => el.classList.remove('active'));
+        document.querySelectorAll('.bottom-bar').forEach(el => el.classList.remove('active'));
+        
+        const targetPage = document.getElementById('page' + pageNum);
+        const targetBtn = document.getElementById('btn' + pageNum);
+        
+        if (targetPage && targetBtn) {
+            targetPage.classList.add('active');
+            targetBtn.classList.add('active');
+            targetPage.scrollTo(0, 0);
+        }
+    }
+</script>
+
+</body>
+</html>
