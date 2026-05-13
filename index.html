@@ -13,7 +13,7 @@
             background-color: #f4f6f8;
             display: flex;
             justify-content: center;
-            align-items: center; /* 전체 화면에서 수직 중앙 정렬 확인 */
+            align-items: center; /* 전체 화면에서 수직 중앙 정렬 */
             min-height: 100vh;
         }
 
@@ -35,7 +35,7 @@
             display: none;
             flex-direction: column;
             align-items: center; /* 가로 중앙 정렬 */
-            justify-content: center; /* 세로 중앙 정렬 강화 */
+            justify-content: center; /* 세로 중앙 정렬 */
             text-align: center;
             -webkit-overflow-scrolling: touch;
         }
@@ -50,7 +50,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* 이미지 및 애니메이션 영역 */
+        /* 이미지 및 지도 영역 */
         .map-wrapper {
             position: relative;
             width: 100%;
@@ -62,6 +62,21 @@
         }
 
         .map-wrapper img {
+            width: 100%;
+            display: block;
+        }
+
+        /* 동영상 플레이어 UI 영역 */
+        .video-wrapper {
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            background-color: #000;
+        }
+
+        .video-wrapper video {
             width: 100%;
             display: block;
         }
@@ -85,7 +100,7 @@
         .circle {
             width: 26px;
             height: 26px;
-            border: 3.5px solid #FFD700; /* 예시 이미지와 유사한 노란색 */
+            border: 3.5px solid #FFD700;
             border-radius: 50%;
             background-color: rgba(255, 215, 0, 0.3);
             box-shadow: 0 0 8px rgba(255, 215, 0, 0.8);
@@ -110,7 +125,7 @@
         .pos4 { top: 63%; left: 69%; transition-delay: 2.9s; } /* 산신석 */
 
         .bottom-bar {
-            position: absolute; /* fixed에서 absolute로 변경하여 컨테이너 하단 고정 */
+            position: absolute;
             bottom: 0;
             width: 100%;
             padding: 20px;
@@ -162,7 +177,7 @@
     <div class="scroll-content active" id="page1">
         <div class="title">
             <span style="font-size: 0.9rem; font-weight: 500; color: #666;">세계유산 조선왕릉<br>가족 탐험대</span><br><br>
-            [O] 탐험 2 명릉 홍살문 [O]<br>
+            🔎 탐험 2 명릉 홍살문 🔍<br>
             🗺️ 조선왕릉 상설도와<br>명릉 상설도 비교 🗺️
         </div>
     </div>
@@ -186,6 +201,13 @@
 
     <div class="scroll-content" id="page3">
         <div class="title" style="font-size: 18px;">정답 : 금천교, 수라간, 산신석, 망료위</div>
+
+        <div class="video-wrapper">
+            <video width="100%" controls playsinline>
+                <source src="https://drive.google.com/uc?export=download&id=1k7smpZRbe7oKoVGDiFgmOzkqkeDhkTpm" type="video/mp4">
+                브라우저가 동영상을 지원하지 않습니다.
+            </video>
+        </div>
         
         <div class="map-wrapper">
             <img src="https://drive.google.com/uc?export=view&id=1X1P8qChvhh_v7u1vEWap50RzQLA1o_1" alt="정답 지도">
@@ -198,7 +220,7 @@
 
         <div class="desc" style="text-align: left; font-size: 14px;">
             📌 <b>금천교</b> : 왕릉과 속세를 구분하는 다리<br>
-            📌 <b>수라간</b> : 산릉 의례 때 진설되는 음식 가운데 따뜻하게 올려야 하는 탕이나 국을 데우는 곳. 수라간은 정자각 동족에 수복방과 대칭해 세워진다.<br>
+            📌 <b>수라간</b> : 산릉 의례 때 진설되는 음식 가운데 따뜻하게 올려야 하는 탕이나 국을 데우는 곳이다. 수라간은 정자각의 동쪽에 수복방과 대칭해 세워진다.<br>
             📌 <b>산신석</b> : 산릉을 지키는 산신에게 예를 올리는 곳으로, 정자각 뒤편에 예감과 대칭되는 위치에 설치된다.<br>
             📌 <b>망료위</b> : 산릉제례 때 축문을 태워 묻기 위한 곳으로, 일반적으로 정자각 우측 뒤편에 설치된다.<br><br>
             <div style="text-align: center;">
@@ -217,7 +239,7 @@
             역사적 상상력을 한번 발휘 해봅시다!<br><br>
             💡 <b>HINT! 금천교가 없어진 이유:</b><br><br>
             18세기 『명릉도』를 보면 본래 명릉의 능역은 지금보다 훨씬 광대했을 것으로 추정되나, 일제강점기 훼손 등으로 현재는 축소된 형국을 보여줍니다.<br><br>
-            <a href="https://portal.nrich.go.kr/royalTombView.do?menuIdx=1273&royal_idx=28" target="_blank" class="link-text">역사적 근거 자세히 보기</a>
+            <a href="https://portal.nrich.go.kr/kor/royalTombView.do?menuIdx=1273&royal_idx=28" target="_blank" class="link-text">역사적 근거 자세히 보기</a>
         </div>
     </div>
     <div class="bottom-bar" id="btn4">
