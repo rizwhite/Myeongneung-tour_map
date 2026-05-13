@@ -66,9 +66,12 @@
             display: block;
         }
 
-        /* 동영상 플레이어 UI 영역 */
+        /* 💡 동영상 플레이어 UI 영역 (비율 유지 반응형 iframe) */
         .video-wrapper {
+            position: relative;
             width: 100%;
+            padding-bottom: 56.25%; /* 16:9 영상 비율 */
+            height: 0;
             border-radius: 12px;
             overflow: hidden;
             margin-bottom: 25px;
@@ -76,9 +79,13 @@
             background-color: #000;
         }
 
-        .video-wrapper video {
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            display: block;
+            height: 100%;
+            border: none;
         }
 
         /* 예시 영상 스타일의 노란 동그라미 애니메이션 */
@@ -177,7 +184,7 @@
     <div class="scroll-content active" id="page1">
         <div class="title">
             <span style="font-size: 0.9rem; font-weight: 500; color: #666;">세계유산 조선왕릉<br>가족 탐험대</span><br><br>
-            🔎 탐험 2 명릉 홍살문 🔍<br>
+            [O] 탐험 2 명릉 홍살문 [O]<br>
             🗺️ 조선왕릉 상설도와<br>명릉 상설도 비교 🗺️
         </div>
     </div>
@@ -203,10 +210,7 @@
         <div class="title" style="font-size: 18px;">정답 : 금천교, 수라간, 산신석, 망료위</div>
 
         <div class="video-wrapper">
-            <video width="100%" controls playsinline>
-                <source src="https://drive.google.com/uc?export=download&id=1k7smpZRbe7oKoVGDiFgmOzkqkeDhkTpm" type="video/mp4">
-                브라우저가 동영상을 지원하지 않습니다.
-            </video>
+            <iframe src="https://drive.google.com/file/d/1k7smpZRbe7oKoVGDiFgmOzkqkeDhkTpm/preview" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </div>
         
         <div class="map-wrapper">
@@ -248,7 +252,7 @@
 
     <div class="scroll-content" id="page5">
         <div class="desc" style="font-weight: 600;">
-            🧩 지령지 2개를 모두 완료했다면,<br>능참봉을 찾아가 확인 후<br>비문 조각을 수령하세요~!<br><br>
+            🧩 미션 2개를 모두 완료했다면,<br>능참봉을 찾아가 확인 후<br>비문 조각을 수령하세요~! <br><br>
             ⛩️ 홍살문을 통과해보자! ⛩️
         </div>
     </div>
